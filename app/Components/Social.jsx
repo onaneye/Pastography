@@ -1,30 +1,38 @@
 import React from 'react'
 import Image from 'next/image'
-import socialImg from "/public/images/socials-img.png"
-import mainTheme from "/public/images/main-theme.png"
+import socialImg from '/public/images/socials-img.png'
+import mainTheme from '/public/images/main-theme.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTwitter, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 const Social = () => {
   return (
-    <div className='mt-[10%] mb-96'>
-        <div className='flex justify-between relative w-full h-12 z-0'>
-            <Image src={mainTheme} className='w-full h-[250px]' alt='' />
-            <div className='flex flex-col justify-center lg:absolute right-40'>
-            <h3 className='text-md pt-6 text-white text-sm font-medium uppercase font-raleway'>Our Socials</h3>
-            <h1 className='text-2xl md:2xl lg:text-3xl xl:text-4xl font-bold capitalize font-poppins text-white'>Getting the latest from our social platforms</h1>
-            <form className='subscribe-container py-4 w-full flex items-center'>
-              <input type="email" className='w-full py-4 shadow-lg focus:border-transparent focus:outline-none text-orange-600 relative text-xl' name="" id="" />
-              <button className='text-white p-5 bg-orange-600 shadow-lg absolute right-0'>Subscribe</button>
-            </form>
-            <div className='social-media-container'>
-
-            </div>
-             
-            </div>
-            
+    <div className="mt-[10%] mb-96 relative">
+      <div className="flex justify-between  w-full h-12 z-0">
+        <Image src={mainTheme} className="w-full h-[250px]" alt="Main theme" />
+        <div className="p-6 lg:p-0 absolute lg:right-10 lg:w-1/2 xl:right-40 ml-4">
+          <h3 className="text-md pt-6 text-white font-medium uppercase font-raleway">Our Socials</h3>
+          <h1 className="text-2xl md:text-2xl lg:text-3xl xl:text-4xl font-bold capitalize font-poppins text-white">Get the latest from our social platforms</h1>
+          <form className="subscribe-container py-4 w-full flex items-center relative">
+            <input type="email" className="w-full py-4 shadow-lg focus:border-transparent focus:outline-none text-orange-600 text-xl" placeholder="Enter your email" />
+            <button className="text-white p-5 bg-orange-600 shadow-lg absolute right-0">Subscribe</button>
+          </form>
+          <div className="social-media-container text-white space-x-7 w-full">
+          <a href="https://twitter.com" aria-label="Twitter">
+          <FontAwesomeIcon icon={faTwitter} size="2x" />
+         </a>
+         <a href="https://facebook.com" aria-label="Facebook">
+        <FontAwesomeIcon icon={faFacebook} size="2x" />
+       </a>
+        <a href="https://instagram.com" aria-label="Instagram">
+        <FontAwesomeIcon icon={faInstagram} size="2x" />
+        </a>
+          </div> 
         </div>
-        <div className='hidden lg:block absolute  z-[10] transform translate-y-[-50%]'>
-            <Image src={socialImg} alt="" />
-        </div>
+      </div>
+      <div className="hidden md:hidden lg:block absolute z-10 transform -translate-y-1/2 lg:left-[-100px] xl:left-[-50px] 2xl:left-0">
+        <Image src={socialImg} alt="Social media" className='' />
+      </div>
     </div>
   )
 }
