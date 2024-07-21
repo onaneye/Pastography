@@ -4,6 +4,7 @@ import Hero from './Hero'
 import About from './About'
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
+import Services from './Services';
 config.autoAddCss = false; // Prevent Font Awesome from adding its own CSS automatically
 
 const app = () => {
@@ -12,6 +13,7 @@ const app = () => {
      <Navbar/>
      <Hero/>
      <About/>
+     <Services/>
     </>
   )
 }
