@@ -10,7 +10,6 @@ config.autoAddCss = false; // Prevent Font Awesome from adding its own CSS autom
 const app = () => {
   return (
     <>
-     <Navbar/>
      <Hero/>
      <About/>
      <Services/>

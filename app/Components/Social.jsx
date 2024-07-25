@@ -7,7 +7,7 @@ import { faTwitter, faFacebook, faInstagram } from '@fortawesome/free-brands-svg
 
 const Social = () => {
   return (
-    <div className="mt-[10%] mb-96 relative">
+    <div className=" container p-4 mt-[10%] mx-auto mb-96 relative">
       <div className="flex justify-between  w-full h-12 z-0">
         <Image src={mainTheme} className="w-full h-[250px]" alt="Main theme" />
         <div className="p-6 lg:p-0 absolute lg:right-10 lg:w-1/2 xl:right-40 ml-4">
