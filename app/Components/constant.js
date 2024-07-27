@@ -24,3 +24,10 @@ export const heroSlider = [
   ];
 
 export const navList = ["Home", "About", "Services", "Portfolio", "Gallery", "Contact"]
+
+export const servicesData = [
+  {
+    image: 'img1'
+    
+  }
+]

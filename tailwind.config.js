@@ -10,7 +10,14 @@ module.exports = {
   theme: {
     extend: {
       animation:{
-        fadeIn: 'animate-fadeIn'
+        fadeIn: 'animate-fadeIn',
+        slide: 'slide 15s infinite'
+      },
+      keyframes: {
+        slide: {
+          '0%': { left: '0' },
+          '100%': { transform: 'translateX(-50%)' },
+        }
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
