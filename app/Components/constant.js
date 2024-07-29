@@ -1,15 +1,16 @@
-// images for services
-// event coverage
-// birthday shoot
-// Personal Branding Photography"
-// Drone Photography and Videography"
-//  Family Photography
-
+// Our service picture imports
 import portraitImages from "/public/images/portrait-person-wearing-yellow.jpg"
 import birthdayShoot from "/public/images/black-white-portrait-professional-tennis-player.jpg"
 import eventCoverage from "/public/images2/IMG_0004.jpg"
 import weddingPhotography from "/public/images2/IMG_8603.jpg"
 import familyPhotography from "/public/images2/family/14.jpg"
+
+// Testimonials Picture Import
+import Ogechi from "/public/images/portrait-person-daily-life-new-york-city.jpg"
+import OlaSamuel from "/public/images/portrait-person-daily-life-new-york-city.jpg"
+import PastorTolu from "/public/images/portrait-person-daily-life-new-york-city.jpg"
+import mrsCythia from "/public/images/african-woman-posing-studio.jpg"
+
 
 export const heroSlider = [
     {
@@ -111,3 +112,35 @@ export const servicesData = [
   },
   
 ];
+
+export const TestimonialsData =[
+  {
+    id: 1,
+    profilePicture: Ogechi,
+    name: "Ogechi. A",
+    testimony: "God's gift multimedia is the best photography service i've patronized",
+    rating: 5
+  },
+  {
+    id: 2,
+    profilePicture: Ogechi,
+    name: "Ogechi. A",
+    testimony: "God's gift multimedia is the best photography service i've patronized",
+    rating: 3.5
+  },
+  {
+    id: 3,
+    profilePicture: Ogechi,
+    name: "Ogechi. A",
+    testimony: "God's gift multimedia is the best photography service i've patronized",
+    rating: 5
+  },
+  {
+    id: 4,
+    profilePicture: mrsCythia,
+    name: "Ogechi. A",
+    testimony: "God's gift multimedia is the best photography service i've patronized",
+    rating: 4
+  }
+]
+

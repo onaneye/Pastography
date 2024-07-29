@@ -2,6 +2,8 @@ import { faStar } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import Rating from './Rating'
+import SocialMediaIcons from './SocialMediaIcons'
+import { TestimonialsData } from './constant'
 
 const Testimonial = () => {
   return (
@@ -11,12 +13,18 @@ const Testimonial = () => {
         What our clients say
       </h1>
       <div className='testimonials-container w-[90%] mx-auto grid grid-cols-2 space-x-1'>
-        <div className=' flex items-center bg-gray-600 w-full shadow-3xl  border-1 border-slate-300  rounded-xl'>
-            <img src='./images/portrait-person-wearing-yellow.jpg' alt='' className='object-fit w-[200px]'/>
+        <div className='flex flex-col md:flex-row items-center bg-gray-600 w-full shadow-3xl  border-1 border-slate-300  rounded-xl'>
+          <div className='object-fit lg:w-[200px]'>
+            <img src='./images/portrait-person-wearing-yellow.jpg' alt='' className='rounded-t-lg h-full w-full  md:rounded-l-lg'/>
+          </div>
             <div className='px-5'>
-            <h1 className='text-2xl text-orange-500 font-poppins font-bold'>John Doe</h1>
-            <p className='text-white'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo error illo aliquid dolorum inventore, molestias quibusdam explicabo quaerat fugit ea architecto! Assumenda natus quasi animi porro a et, veniam necessitatibus?</p> 
-             <Rating/>   
+              {TestimonialsData.map((item)=>(
+       <h1 className='text-2xl text-orange-500 font-poppins font-bold'>John Doe</h1>
+       <p className='text-white'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo error illo al?</p> 
+        <Rating rating={4.5}/> 
+        <SocialMediaIcons  facebook="https://google.com" twiter="https://twitter.com" instagram="https://instagram.com" linkedin="https://linkedin.com"/> 
+              ))}
+      
             </div>
             
         </div>

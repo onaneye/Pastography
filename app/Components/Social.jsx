@@ -2,8 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import socialImg from '/public/images/socials-img.png'
 import mainTheme from '/public/images/main-theme.png'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitter, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import SocialMediaIcons from './SocialMediaIcons';
 
 const Social = () => {
   return (
@@ -17,17 +16,7 @@ const Social = () => {
             <input type="email" className="w-full py-4 shadow-lg focus:border-transparent focus:outline-none text-orange-600 text-xl" placeholder="Enter your email" />
             <button className="text-white p-5 bg-orange-600 shadow-lg absolute right-0">Subscribe</button>
           </form>
-          <div className="social-media-container text-white space-x-7 w-full">
-          <a href="https://twitter.com" aria-label="Twitter">
-          <FontAwesomeIcon icon={faTwitter} size="2x" />
-         </a>
-         <a href="https://facebook.com" aria-label="Facebook">
-        <FontAwesomeIcon icon={faFacebook} size="2x" />
-       </a>
-        <a href="https://instagram.com" aria-label="Instagram">
-        <FontAwesomeIcon icon={faInstagram} size="2x" />
-        </a>
-          </div> 
+         <SocialMediaIcons facebook="https://facebook.com" twiter="https://twitter.com" instagram="https://instagram.com" linkedin="https://linkedin.com"/>
         </div>
       </div>
       <div className="hidden md:hidden lg:block absolute z-10 transform -translate-y-1/2 lg:left-[-100px] xl:left-[-50px] 2xl:left-0">

@@ -12,18 +12,18 @@ const Rating = ({ rating }) => {
   const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center my-2">
       {/* Render full stars */}
       {Array.from({ length: fullStars }).map((_, index) => (
-        <FontAwesomeIcon key={`full-${index}`} icon={faStar} className="text-yellow-500" />
+        <FontAwesomeIcon key={`full-${index}`} icon={faStar} className="text-orange-500" />
       ))}
       
       {/* Render half star if applicable */}
-      {hasHalfStar && <FontAwesomeIcon icon={faStarHalfAlt} className="text-yellow-500" />}
+      {hasHalfStar && <FontAwesomeIcon icon={faStarHalfAlt} className="text-orange-500" />}
       
       {/* Render empty stars */}
       {Array.from({ length: emptyStars }).map((_, index) => (
-        <FontAwesomeIcon key={`empty-${index}`} icon={faStarRegular} className="text-yellow-500" />
+        <FontAwesomeIcon key={`empty-${index}`} icon={faStarRegular} className="text-orange-500" />
       ))}
       
       {/* Display rating value */}

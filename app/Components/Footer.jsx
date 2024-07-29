@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, faFacebook, faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import SocialMediaIcons from './SocialMediaIcons';
 
 const Footer = () => {
   return (
@@ -34,20 +35,7 @@ const Footer = () => {
           {/* Social Media Links */}
           <div className="w-full md:w-1/4 mb-6">
             <h3 className="text-xl font-semibold mb-4 text-orange-500 font-poppins">Follow Us</h3>
-            <div className="flex space-x-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
-                 <FontAwesomeIcon icon={faFacebook} size="2x" />
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
-              <FontAwesomeIcon icon={faTwitter} size="2x" />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
-              <FontAwesomeIcon icon={faInstagram} size="2x" />
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
-              <FontAwesomeIcon icon={faLinkedin} size="2x" />
-              </a>
-            </div>
+              <SocialMediaIcons/>
           </div>
         </div>
 
