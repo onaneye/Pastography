@@ -11,7 +11,7 @@ module.exports = {
     extend: {
       animation:{
         fadeIn: 'animate-fadeIn',
-        slide: 'slide 15s infinite'
+        slide: 'slide 20s linear infinite',
       },
       keyframes: {
         slide: {
