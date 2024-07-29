@@ -35,7 +35,7 @@ export const heroSlider = [
     }
   ];
 
-export const navList = ["Home", "About", "Services", "Portfolio", "Gallery", "Contact"]
+export const navList = ["Home", "About", "Services", "Portfolio", "Blogs", "Testimonials","Contact"]
 
 export const servicesData = [
   {

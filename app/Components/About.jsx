@@ -12,9 +12,9 @@ const About = () => {
         <Image src={aboutImg} alt='about' className='w-[90%] h-[90%] rounded-[10px] object-cover' />
       </div>
       <div className='text-container mt-12 w-full'>
-        <h3 className='text-md text-[#00a859] text-sm font-medium uppercase font-raleway'>About Us</h3>
+        <h3 className='text-md text-[#00a859] text-sm font-medium uppercase font-poppins-bold'>About Us</h3>
         <h1 className='text-2xl md:2xl lg:text-3xl xl:text-5xl font-bold capitalize font-poppins text-gray-900'>Bringing Clarity to Life's Moments <span className='text-orange-500'>Through Photography</span> </h1>
-        <p className='md:text-lg lg:xl xl:2xl py-4 text-gray-600 font-poppins lg:leading-9'>God’s Gift Multimedia, located in Ota, Ogun State, Nigeria, was founded in 2019 with an initial investment of ₦1,500 ($3.65) by Adetayo Samuel. Our services primarily cater to Nigerians, constituting approximately 95% of our clientele.
+        <p className='md:text-lg lg:xl xl:2xl py-4 text-gray-600 font-Josefin_Sans lg:leading-9'>God’s Gift Multimedia, located in Ota, Ogun State, Nigeria, was founded in 2019 with an initial investment of ₦1,500 ($3.65) by Adetayo Samuel. Our services primarily cater to Nigerians, constituting approximately 95% of our clientele.
             Issue:
             Busy families often struggle to capture high-quality videography and photography to preserve their special moments. Professional photo studios are typically visited only on rare occasions like weddings or family portraits, leading to missed opportunities and potential business losses when clients fail to initiate contact.
 

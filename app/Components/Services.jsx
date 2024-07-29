@@ -5,8 +5,8 @@ import { servicesData } from "./constant";
 const Services = () => {
   return (
     <div>
-      <h3 className="text-md pt-6 font-medium uppercase font-raleway text-center">Our Services</h3>
-      <h1 className='text-3xl md:text-3xl lg:text-3xl xl:text-5xl font-bold capitalize font-poppins text-gray-900 text-center mb-12'>
+      <h3 className="text-md pt-6 text-[#00a859] font-medium uppercase font-poppins text-center">Our Services</h3>
+      <h1 className='text-2xl md:2xl lg:text-3xl xl:text-5xl  font-bold capitalize font-poppins text-gray-900 text-center mb-12'>
         What makes us stand out
       </h1>
       <div className='slider h-[400px] w-[95%] mx-auto snap-x snap-mandatory  relative overflow-hidden'>
@@ -22,7 +22,7 @@ const Services = () => {
                  <h1 className="text-3xl font-poppins-bold font-bold w-[280px]">{item.headingText}</h1>
                </div>
  
-               <button className="absolute bottom-3 left-4 py-3 px-5 bg-white text-black font-Josefin_Sans shadow-sm rounded-full">
+               <button className="absolute bottom-3 left-4 py-3 px-5 bg-white text-black font-Josefin_Sans shadow-xl rounded-full">
                  {item.button}
                </button>
              </div>
