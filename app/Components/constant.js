@@ -27,7 +27,8 @@ export const navList = ["Home", "About", "Services", "Portfolio", "Gallery", "Co
 
 export const servicesData = [
   {
-    image: 'img1'
-    
-  }
+    image: 'img1',
+    headingText: "Some heading text",
+    description: "lorem looo",
+}
 ]
