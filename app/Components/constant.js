@@ -8,7 +8,7 @@ import familyPhotography from "/public/images2/family/14.jpg"
 // Testimonials Picture Import
 import Ogechi from "/public/images/portrait-person-daily-life-new-york-city.jpg"
 import OlaSamuel from "/public/images/portrait-person-daily-life-new-york-city.jpg"
-import PastorTolu from "/public/images/portrait-person-daily-life-new-york-city.jpg"
+import PastorTolu from "/public/images/portrait-person-wearing-yellow.jpg"
 import mrsCythia from "/public/images/african-woman-posing-studio.jpg"
 
 
@@ -124,23 +124,23 @@ export const TestimonialsData =[
   {
     id: 2,
     profilePicture: Ogechi,
-    name: "Ogechi. A",
+    name: "Ola Samuel",
     testimony: "God's gift multimedia is the best photography service i've patronized",
-    rating: 3.5
+    rating: 4.5
   },
   {
     id: 3,
-    profilePicture: Ogechi,
-    name: "Ogechi. A",
+    profilePicture: PastorTolu,
+    name: "Mrs Cythia",
     testimony: "God's gift multimedia is the best photography service i've patronized",
     rating: 5
   },
   {
     id: 4,
     profilePicture: mrsCythia,
-    name: "Ogechi. A",
+    name: "Pastor Tolu",
     testimony: "God's gift multimedia is the best photography service i've patronized",
-    rating: 4
+    rating: 2.5
   }
 ]
 
