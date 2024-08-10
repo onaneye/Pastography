@@ -144,3 +144,51 @@ export const TestimonialsData =[
   }
 ]
 
+export const galleryCategory = ["Family", "Potrait", "Birthday-Shoot", "Event", "Wedding"]
+
+
+export const galleryData = [
+  {
+    id: 1,
+    category: "family",
+    images: ["/public/images2/family/1.jpg","/public/images2/family/2.jpg", "/public/images2/family/3.jpg", "/public/images2/family/4.jpg",],
+    likes: 5,
+    views: 6
+  },
+  {
+    id: 2,
+    category: "Potrait",
+    images: ["/public/images2/family/2.jpg","/public/images2/family/2.jpg", "/public/images2/family/3.jpg", "/public/images2/family/4.jpg",],
+    likes: 5,
+    views: 6
+  },
+  {
+    id: 3,
+    category: "Birthday Shoot",
+    images: ["/public/images2/family/3.jpg","/public/images2/family/2.jpg", "/public/images2/family/3.jpg", "/public/images2/family/4.jpg",],
+    likes: 5,
+    views: 6
+  },
+  {
+    id: 4,
+    category: "Event Coverage",
+    images: ["/public/images2/family/4.jpg","/public/images2/family/2.jpg", "/public/images2/family/3.jpg", "/public/images2/family/4.jpg",],
+    likes: 5,
+    views: 6
+  },
+  {
+    id: 5,
+    category: "wedding",
+    images: ["/public/images2/family/5.jpg","/public/images2/family/2.jpg", "/public/images2/family/3.jpg", "/public/images2/family/4.jpg",],
+    likes: 5,
+    views: 6
+  },
+  {
+    id: 6,
+    category: "family",
+    images: ["/public/images2/family/6.jpg","/public/images2/family/2.jpg", "/public/images2/family/3.jpg", "/public/images2/family/4.jpg",],
+    likes: 5,
+    views: 6
+  },
+]
+

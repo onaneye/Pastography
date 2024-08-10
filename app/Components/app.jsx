@@ -8,6 +8,7 @@ import Services from './Services';
 import Footer from './Footer';
 import Testimonial from './Testimonial';
 import Contact from './Contact';
+import Portfolio from './Portfolio';
 config.autoAddCss = false; // Prevent Font Awesome from adding its own CSS automatically
 
 const app = () => {
@@ -16,6 +17,7 @@ const app = () => {
      <Hero/>
      <About/>
      <Services/>
+     <Portfolio/>
      <Testimonial/>
      <Contact/>
      <Footer/>
