@@ -11,9 +11,14 @@ const galleryItems = [
   { id: 2, category: 'Urban', title: 'City Lights', url: '/images/portrait-person-wearing-yellow.jpg' },
   { id: 3, category: 'Family', title: 'Mountain Peaks', url: '/images2/family/1.jpg' },
   { id: 4, category: 'Family', title: 'Mountain Peaks', url: '/images2/family/1.jpg' },
-  { id: 5, category: 'Urban', title: 'Street Art', url: '/images/street-art.jpg' },
-  { id: 6, category: 'Urban', title: 'Street Art', url: '/images/street-art.jpg' },
-  { id: 7, category: 'Urban', title: 'Street Art', url: '/images/street-art.jpg' },
+  { id: 5, category: 'Urban', title: 'Street Art', url: '/images2/30.jpg' },
+  { id: 6, category: 'Urban', title: 'Street Art', url: '/images2/New folder/7.jpg' },
+  { id: 7, category: 'Urban', title: 'Street Art', url: '/images2/IMG_1590.jpg' },
+  { id: 8, category: 'Urban', title: 'Street Art', url: '/images2/73.jpg' },
+  { id: 9, category: 'Urban', title: 'Street Art', url: '/images2/IMG_1741.jpg' },
+  { id: 10, category: 'Urban', title: 'Street Art', url: '/images2/IMG_8613.jpg' },
+  { id: 11, category: 'Urban', title: 'Street Art', url: '/images2/IMG-20211004-WA0003.jpg' },
+  { id: 12, category: 'Urban', title: 'Street Art', url: '/images2/IMG_0332.jpg' },
   // Add more items as needed
 ];
 
@@ -91,11 +96,11 @@ const Portfolio = () => {
       </ul>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredItems.map((item) => (
-          <div key={item.id} className="bg-gray-100 p-4 rounded-lg shadow-lg overflow-hidden">
+          <div key={item.id} className=" bg-gray-100 p-4 rounded-lg shadow-lg overflow-hidden">
             <img 
               src={item.url} 
               alt={item.title} 
-              className="w-full h-64 object-cover rounded-md mb-2 hover:scale-110 transition-transform duration-500 ease-in-out cursor-pointer" 
+              className="w-full h-[450px] object-cover object-top-12 rounded-md mb-7 hover:scale-110 transition-transform duration-500 ease-in-out cursor-pointer" 
               onClick={() => handleImageClick(item)} // Update view count and open modal
             />
             <div className='image-information flex justify-between my-3'>
