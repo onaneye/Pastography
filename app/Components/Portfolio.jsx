@@ -1,23 +1,70 @@
-'use client'
-import React, { useState } from 'react'
-import { galleryCategory } from './constant'  // Assuming you have this array defined
+'use client';
+import React, { useState, useCallback } from 'react';
+import Modal from './Modal'; // Import the modal component
+import { galleryCategory } from './constant';  // Assuming you have this array defined
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faHeart, faThumbsUp } from '@fortawesome/free-regular-svg-icons';
 
 // Mock data for gallery items
 const galleryItems = [
-  { id: 1, category: 'Family', title: 'Beautiful Sunset', url: '/images/sunset.jpg' },
-  { id: 2, category: 'Urban', title: 'City Lights', url: '/images/city.jpg' },
-  { id: 3, category: 'Nature', title: 'Mountain Peaks', url: '/images/mountains.jpg' },
-  { id: 4, category: 'Urban', title: 'Street Art', url: '/images/street-art.jpg' },
+  { id: 1, category: 'Family', title: 'Beautiful Sunset', url: '/images/black-white-portrait-professional-tennis-player.jpg' },
+  { id: 2, category: 'Urban', title: 'City Lights', url: '/images/portrait-person-wearing-yellow.jpg' },
+  { id: 3, category: 'Family', title: 'Mountain Peaks', url: '/images2/family/1.jpg' },
+  { id: 4, category: 'Family', title: 'Mountain Peaks', url: '/images2/family/1.jpg' },
+  { id: 5, category: 'Urban', title: 'Street Art', url: '/images/street-art.jpg' },
+  { id: 6, category: 'Urban', title: 'Street Art', url: '/images/street-art.jpg' },
+  { id: 7, category: 'Urban', title: 'Street Art', url: '/images/street-art.jpg' },
   // Add more items as needed
 ];
 
 const Portfolio = () => {
+  const [loading, setLoading] = useState(false);
+  const [batchSize] = useState(6);
+  const [images] = useState(galleryItems);
+  const [loadedImages, setLoadedImages] = useState(images.slice(0, batchSize)); // Initialize with the first batch
   const [categoryActive, setCategoryActive] = useState('All');
+  const [selectedImage, setSelectedImage] = useState(null); // State to hold the clicked image
 
-  // Filter items based on the selected category
+  // Initialize engagement counts for each image
+  const [engagement, setEngagement] = useState(() => 
+    images.reduce((acc, item) => ({
+      ...acc,
+      [item.id]: { view: 0, love: 0, like: 0 }
+    }), {})
+  );
+
   const filteredItems = categoryActive === 'All'
-    ? galleryItems
-    : galleryItems.filter(item => item.category === categoryActive);
+    ? loadedImages
+    : loadedImages.filter(item => item.category === categoryActive);
+
+  const loadMore = useCallback(() => {
+    if (loading) return;
+
+    setLoading(true);
+
+    setTimeout(() => {
+      const nextBatch = images.slice(loadedImages.length, loadedImages.length + batchSize);
+      setLoadedImages(prev => [...prev, ...nextBatch]);
+      setLoading(false);
+    }, 2000); // Adjusted timeout for demo purposes
+  }, [loading, images, loadedImages, batchSize]);
+
+  const handleEngagementButton = (id, type) => {
+    setEngagement(prevState => ({
+      ...prevState,
+      [id]: {
+        ...prevState[id],
+        [type]: prevState[id][type] + 1
+      }
+    }));
+  };
+
+  const handleImageClick = (item) => {
+    // Update view count for the clicked image
+    handleEngagementButton(item.id, 'view');
+    // Set the selected image to open the modal
+    setSelectedImage(item);
+  };
 
   return (
     <div className="p-4">
@@ -32,30 +79,68 @@ const Portfolio = () => {
         >
           All
         </li>
-        {
-          galleryCategory.map((item) => (
-            <li
-              key={item}
-              onClick={() => setCategoryActive(item)}
-              className={`text-md bg-gray-200 shadow-lg rounded-md px-3 py-2 cursor-pointer transition-all ease-in ${categoryActive === item ? 'bg-orange-500 text-white' : 'text-green-500 hover:bg-orange-500 hover:text-white'}`}
-            >
-              {item}
-            </li>
-          ))
-        }
+        {galleryCategory.map((item) => (
+          <li
+            key={item}
+            onClick={() => setCategoryActive(item)}
+            className={`text-md bg-gray-200 shadow-lg rounded-md px-3 py-2 cursor-pointer transition-all ease-in ${categoryActive === item ? 'bg-orange-500 text-white' : 'text-green-500 hover:bg-orange-500 hover:text-white'}`}
+          >
+            {item}
+          </li>
+        ))}
       </ul>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {
-          filteredItems.map((item) => (
-            <div key={item.id} className="bg-gray-100 p-4 rounded-lg shadow-lg">
-              <img src={item.url} alt={item.title} className="w-full h-64 object-cover rounded-md mb-2" />
+        {filteredItems.map((item) => (
+          <div key={item.id} className="bg-gray-100 p-4 rounded-lg shadow-lg overflow-hidden">
+            <img 
+              src={item.url} 
+              alt={item.title} 
+              className="w-full h-64 object-cover rounded-md mb-2 hover:scale-110 transition-transform duration-500 ease-in-out cursor-pointer" 
+              onClick={() => handleImageClick(item)} // Update view count and open modal
+            />
+            <div className='image-information flex justify-between my-3'>
               <h2 className="text-lg font-bold">{item.title}</h2>
+              <div className='gallery-icons flex space-x-2'>
+                <span 
+                  className='text-orange-600 font-poppins text-lg cursor-pointer'
+                >
+                  <FontAwesomeIcon icon={faEye} size={2}/> {engagement[item.id]?.view || 0}
+                </span>
+                <span 
+                  className='text-orange-600 font-poppins text-lg cursor-pointer'
+                  onClick={() => handleEngagementButton(item.id, 'love')}
+                >
+                  <FontAwesomeIcon icon={faHeart} size={2}/> {engagement[item.id]?.love || 0}
+                </span>
+                <span 
+                  className='text-orange-600 font-poppins text-lg cursor-pointer'
+                  onClick={() => handleEngagementButton(item.id, 'like')}
+                >
+                  <FontAwesomeIcon icon={faThumbsUp} size={2}/> {engagement[item.id]?.like || 0}
+                </span>
+              </div>
             </div>
-          ))
-        }
+          </div>
+        ))}
+        {loadedImages.length < images.length && (
+          <button
+            onClick={loadMore}
+            className={`py-2 px-4 mx-auto ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-500'} text-white rounded-md transition-colors duration-300`}
+            disabled={loading}
+          >
+            {loading ? "Loading images..." : "Load More"}
+          </button>
+        )}
       </div>
+      {selectedImage && (
+        <Modal 
+          isOpen={!!selectedImage} 
+          onClose={() => setSelectedImage(null)} 
+          image={selectedImage} 
+        />
+      )}
     </div>
-  )
+  );
 }
 
-export default Portfolio
+export default Portfolio;
