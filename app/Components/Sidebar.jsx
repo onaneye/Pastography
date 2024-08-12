@@ -31,9 +31,9 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="p-3">
+    <div className="">
       <div className='hidden lg:fixed lg:inset-y-0 lg:flex lg:w-72 lg:flex-col'>
-        <div className='flex grow flex-col gap-y-5 overflow-y-auto bg-gray-800 px-6 '>
+        <div className='flex grow flex-col gap-y-5 overflow-y-auto bg-gray-800 px-4 '>
           <div className="flex h-16 shrink-0 items-center">
             <h3 className='text-3xl font-bold text-white'>Logo</h3>
           </div>

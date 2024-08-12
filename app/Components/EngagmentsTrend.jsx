@@ -30,14 +30,14 @@ const data = {
       label: 'My First Dataset',
       data: [65, 59, 80, 81, 56],
       fill: false,
-      borderColor: 'rgb(75, 192, 192)',
+      borderColor: 'rgb(255, 255, 255)',
       tension: 0.1,
     },
   ],
 };
 
 const MyChart = () => (
-  <div className='bg-gray-800 w-full rounded-lg'>
+  <div className='bg-gray-800  rounded-lg'>
     <h2 className='text-white'>Line Chart Example</h2>
     <Line data={data} />
   </div>
