@@ -1,12 +1,15 @@
 "use client"
 
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '@/firebaseConfig';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faUserCircle } from '@fortawesome/free-regular-svg-icons';
-import axios from 'axios';
-import { useRouter } from 'next/navigation';
+import axios from 'axios';;
 
 const Page = () => {
+    const [error, setError] = useState()
     const router = useRouter()
     const [admin, setAdmin] = useState({
         email: "",
@@ -14,30 +17,19 @@ const Page = () => {
     });
     const [loading, setLoading] = useState(false);
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault(); // Prevent the default form submission
-    //     try {
-    //         setLoading(true);
-    //         const response = await axios.post("/api/admin", admin);  
-    //         console.log(response.data);
-    //     } catch (error) {
-    //         console.error("Error submitting form:", error);
-    //     } finally {
-    //         setLoading(false);
-    //     }
-    // };
     
-    const handleSubmit = (e)=>{
-        e.preventDefault()
-        
-            setLoading(true)
-            console.log("user", admin)
-            setTimeout(() => {
-                setLoading(false)
-                router.push("/dashboard")
-            }, 2000);
-           
-       }
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true)
+        try {
+          await signInWithEmailAndPassword(auth, admin.email, admin.password);
+          router.push('/dashboard'); // Redirect to the dashboard after successful login
+        } catch (error) {
+          setError(error.message);
+        } finally{
+            setLoading(false)
+        }
+      };
 
     const handleChange = (e) => {
         const { name, value } = e.target;

@@ -30,56 +30,63 @@ const FileUploadModal = () => {
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         if (file) {
-            setFileUploadValue(prevState => ({
-                ...prevState,
-                file: file
-            }));
-        }
-    };
-
-    const handleSubmit = async () => {
-        if (!fileUploadValue.file) {
-            alert('Please choose a file');
+          if (file.size > 5 * 1024 * 1024) { // Example: 5 MB limit
+            alert('File size exceeds 5 MB');
             return;
+          }
+          if (!['image/jpeg', 'image/png'].includes(file.type)) {
+            alert('Only JPEG and PNG files are allowed');
+            return;
+          }
+          setFileUploadValue(prevState => ({
+            ...prevState,
+            file: file
+          }));
+        }
+      };
+      
+
+      const handleSubmit = async () => {
+        if (!fileUploadValue.file) {
+          alert('Please choose a file');
+          return;
         }
         const auth = getAuth();
         const user = auth.currentUser;
-
-    if (!user) {
-  alert('User must be logged in to perform this action');
-  return;
-    }
-
-
-        try {
-            setUploading(true);
-            const storageRef = ref(storage, `images/${fileUploadValue.file.name}`);
-            
-            // Upload the file
-            await uploadBytes(storageRef, fileUploadValue.file);
-            
-            // Retrieve the file URL
-            const downloadedURL = await getDownloadURL(storageRef);
-
-            // Save metadata to Firestore
-            await addDoc(collection(db, 'images'), {
-                url: downloadedURL,
-                name: fileUploadValue.fileName,
-                category: fileUploadValue.category,
-            });
-
-            alert('File uploaded and metadata saved!');
-            setFileUploadValue({ fileName: "", category: "", file: null });
-        } catch (error) {
-            console.error('Error submitting the file:', error);
-            alert('Error submitting the file');
-        } finally {
-            setUploading(false);
+      
+        if (!user) {
+          alert('You must be logged in to upload files.');
+          return;
         }
-    };
-
-   
-
+      
+        try {
+          setUploading(true);
+          const storageRef = ref(storage, `images/${fileUploadValue.file.name}`);
+          
+          // Upload the file
+          await uploadBytes(storageRef, fileUploadValue.file);
+          
+          // Retrieve the file URL
+          const downloadedURL = await getDownloadURL(storageRef);
+      
+          // Save metadata to Firestore
+          await addDoc(collection(db, 'images'), {
+            url: downloadedURL,
+            name: fileUploadValue.fileName,
+            category: fileUploadValue.category,
+            userId: user.uid, // Optionally save the user ID
+          });
+      
+          alert('File uploaded and metadata saved!');
+          setFileUploadValue({ fileName: "", category: "", file: null });
+        } catch (error) {
+          console.error('Error submitting the file:', error.message);
+          alert('Error submitting the file: ' + error.message);
+        } finally {
+          setUploading(false);
+        }
+      };
+      
 
 
     return (

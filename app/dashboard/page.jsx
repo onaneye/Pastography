@@ -1,4 +1,10 @@
 // pages/index.js
+'use client'
+
+import { useEffect, useState } from 'react';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { auth } from '@/firebaseConfig';
+import { useRouter } from 'next/navigation'
 
 import ViewsCard from '../Components/ViewsCard';
 import CommentsCard from '../Components/CommentsCard';
@@ -13,6 +19,8 @@ const HomePage = () => {
     { id: 2, name: 'Jane Smith', position: 'Secretary', picture: '/images2/samuel 2.jpg', dateJoined: '2023-02-20' },
     // Add more users as needed
   ];
+
+  
 
   return (
     <>
@@ -41,5 +49,6 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
 
 

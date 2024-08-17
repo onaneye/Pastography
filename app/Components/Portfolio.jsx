@@ -1,42 +1,21 @@
 'use client';
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import Modal from './Modal'; // Import the modal component
-import { galleryCategory } from './constant';  // Assuming you have this array defined
+import { galleryCategory } from './constant'; // Ensure this is defined
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faHeart, faThumbsUp } from '@fortawesome/free-regular-svg-icons';
-
-// Mock data for gallery items
-const galleryItems = [
-  { id: 1, category: 'Family', title: 'Beautiful Sunset', url: '/images/black-white-portrait-professional-tennis-player.jpg' },
-  { id: 2, category: 'Urban', title: 'City Lights', url: '/images/portrait-person-wearing-yellow.jpg' },
-  { id: 3, category: 'Family', title: 'Mountain Peaks', url: '/images2/family/1.jpg' },
-  { id: 4, category: 'Family', title: 'Mountain Peaks', url: '/images2/family/1.jpg' },
-  { id: 5, category: 'Urban', title: 'Street Art', url: '/images2/30.jpg' },
-  { id: 6, category: 'Urban', title: 'Street Art', url: '/images2/New folder/7.jpg' },
-  { id: 7, category: 'Urban', title: 'Street Art', url: '/images2/IMG_1590.jpg' },
-  { id: 8, category: 'Urban', title: 'Street Art', url: '/images2/73.jpg' },
-  { id: 9, category: 'Urban', title: 'Street Art', url: '/images2/IMG_1741.jpg' },
-  { id: 10, category: 'Urban', title: 'Street Art', url: '/images2/IMG_8613.jpg' },
-  { id: 11, category: 'Urban', title: 'Street Art', url: '/images2/IMG-20211004-WA0003.jpg' },
-  { id: 12, category: 'Urban', title: 'Street Art', url: '/images2/IMG_0332.jpg' },
-  // Add more items as needed
-];
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '@/firebaseConfig';
 
 const Portfolio = () => {
   const [loading, setLoading] = useState(false);
   const [batchSize] = useState(6);
-  const [images] = useState(galleryItems);
-  const [loadedImages, setLoadedImages] = useState(images.slice(0, batchSize)); // Initialize with the first batch
+  const [images, setImages] = useState([]);
+  const [loadedImages, setLoadedImages] = useState([]);
   const [categoryActive, setCategoryActive] = useState('All');
-  const [selectedImage, setSelectedImage] = useState(null); // State to hold the clicked image
+  const [selectedImage, setSelectedImage] = useState(null);
 
-  // Initialize engagement counts for each image
-  const [engagement, setEngagement] = useState(() => 
-    images.reduce((acc, item) => ({
-      ...acc,
-      [item.id]: { view: 0, love: 0, like: 0 }
-    }), {})
-  );
+  const [engagement, setEngagement] = useState({});
 
   const filteredItems = categoryActive === 'All'
     ? loadedImages
@@ -44,14 +23,13 @@ const Portfolio = () => {
 
   const loadMore = useCallback(() => {
     if (loading) return;
-
     setLoading(true);
 
     setTimeout(() => {
       const nextBatch = images.slice(loadedImages.length, loadedImages.length + batchSize);
       setLoadedImages(prev => [...prev, ...nextBatch]);
       setLoading(false);
-    }, 2000); // Adjusted timeout for demo purposes
+    }, 2000);
   }, [loading, images, loadedImages, batchSize]);
 
   const handleEngagementButton = (id, type) => {
@@ -59,17 +37,31 @@ const Portfolio = () => {
       ...prevState,
       [id]: {
         ...prevState[id],
-        [type]: prevState[id][type] + 1
+        [type]: (prevState[id]?.[type] || 0) + 1
       }
     }));
   };
 
   const handleImageClick = (item) => {
-    // Update view count for the clicked image
     handleEngagementButton(item.id, 'view');
-    // Set the selected image to open the modal
     setSelectedImage(item);
   };
+
+  useEffect(() => {
+    const fetchImagesData = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'images'));
+        const documents = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setImages(documents);
+        setLoadedImages(documents.slice(0, batchSize)); // Initialize with first batch
+        console.log(documents)
+      } catch (error) {
+        console.error("There was an error fetching the data from the server", error);
+      }
+    };
+
+    fetchImagesData();
+  }, []);
 
   return (
     <div className="p-4">
@@ -96,15 +88,16 @@ const Portfolio = () => {
       </ul>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredItems.map((item) => (
-          <div key={item.id} className=" bg-gray-100 p-4 rounded-lg shadow-lg overflow-hidden">
+          <div key={item.id} className="bg-gray-100 p-4 rounded-lg shadow-lg overflow-hidden">
             <img 
               src={item.url} 
               alt={item.title} 
               className="w-full h-[450px] object-cover object-top-12 rounded-md mb-7 hover:scale-110 transition-transform duration-500 ease-in-out cursor-pointer" 
-              onClick={() => handleImageClick(item)} // Update view count and open modal
+              onClick={() => handleImageClick(item)}
+              onError={(e) => e.target.src = '/path/to/default-image.jpg'} // Fallback image
             />
             <div className='image-information flex justify-between my-3'>
-              <h2 className="text-lg font-bold">{item.title}</h2>
+              <h2 className="text-lg font-bold">{item.name}</h2>
               <div className='gallery-icons flex space-x-2'>
                 <span 
                   className='text-orange-600 font-poppins text-lg cursor-pointer'

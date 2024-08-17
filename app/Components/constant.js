@@ -144,7 +144,7 @@ export const TestimonialsData =[
   }
 ]
 
-export const galleryCategory = ["Family", "Potrait", "Birthday-Shoot", "Event", "Wedding"]
+export const galleryCategory = ["Family", "Potrait", "Birthday-Shoot", "Event", "weddings"]
 
 
 export const galleryData = [
