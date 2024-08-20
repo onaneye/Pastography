@@ -1,3 +1,4 @@
+import AdminProjects from '@/app/Components/AdminProjects'
 import FileUpload from '@/app/Components/FileUpload'
 import React from 'react'
 
@@ -7,6 +8,7 @@ const page = () => {
       <FileUpload/>
       <div >
           <h1 className='text-white text-4xl font-poppins-bold'>Recent Projects</h1>
+          <AdminProjects/>
       </div>
     </div>
   )

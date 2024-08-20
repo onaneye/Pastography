@@ -23,6 +23,11 @@
       "static/chunks/main-app.js",
       "static/chunks/app/dashboard/layout.js"
     ],
+    "/admin/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/admin/page.js"
+    ],
     "/dashboard/project/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
