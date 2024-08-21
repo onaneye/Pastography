@@ -4,8 +4,9 @@ import Modal from './Modal'; // Import the modal component
 import { galleryCategory } from './constant'; // Ensure this is defined
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faHeart, faThumbsUp } from '@fortawesome/free-regular-svg-icons';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, updateDoc, doc, setDoc } from 'firebase/firestore';
 import { db } from '@/firebaseConfig';
+import { signInWithPopup,GoogleAuthProvider } from 'firebase/auth';
 
 const Portfolio = () => {
   const [loading, setLoading] = useState(false);
@@ -14,9 +15,12 @@ const Portfolio = () => {
   const [loadedImages, setLoadedImages] = useState([]);
   const [categoryActive, setCategoryActive] = useState('All');
   const [selectedImage, setSelectedImage] = useState(null);
-
   const [engagement, setEngagement] = useState({});
+  
+  // Simulated user ID
+  const userId = 'user123'; 
 
+  // Filter images based on category
   const filteredItems = categoryActive === 'All'
     ? loadedImages
     : loadedImages.filter(item => item.category === categoryActive);
@@ -32,7 +36,26 @@ const Portfolio = () => {
     }, 2000);
   }, [loading, images, loadedImages, batchSize]);
 
-  const handleEngagementButton = (id, type) => {
+  const handleEngagementButton = async (id, type) => {
+    const userEngagements = JSON.parse(localStorage.getItem('userEngagements')) || {};
+    
+    // Check if the user has already engaged with this image
+    if (userEngagements[userId]?.[id]?.includes(type)) {
+      console.log('Already engaged');
+      return;
+    }
+
+    // Update local storage
+    const updatedEngagements = {
+      ...userEngagements,
+      [userId]: {
+        ...userEngagements[userId],
+        [id]: [...(userEngagements[userId]?.[id] || []), type]
+      }
+    };
+    localStorage.setItem('userEngagements', JSON.stringify(updatedEngagements));
+
+    // Update state
     setEngagement(prevState => ({
       ...prevState,
       [id]: {
@@ -40,6 +63,16 @@ const Portfolio = () => {
         [type]: (prevState[id]?.[type] || 0) + 1
       }
     }));
+
+    // Optionally, update Firestore
+    try {
+      const imageDocRef = doc(db, 'images', id);
+      await updateDoc(imageDocRef, {
+        [`engagement.${type}`]: (prevState[id]?.[type] || 0) + 1
+      });
+    } catch (error) {
+      console.error("Error updating engagement:", error);
+    }
   };
 
   const handleImageClick = (item) => {
@@ -54,14 +87,20 @@ const Portfolio = () => {
         const documents = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         setImages(documents);
         setLoadedImages(documents.slice(0, batchSize)); // Initialize with first batch
-        console.log(documents)
+
+        // Initialize engagement state from Firestore or localStorage
+        const localEngagements = JSON.parse(localStorage.getItem('userEngagements')) || {};
+        setEngagement(documents.reduce((acc, doc) => {
+          acc[doc.id] = doc.engagement || {};
+          return acc;
+        }, {}));
       } catch (error) {
-        console.error("There was an error fetching the data from the server", error);
+        console.error("Error fetching images:", error);
       }
     };
 
     fetchImagesData();
-  }, []);
+  }, [batchSize]);
 
   return (
     <div className="p-4">
@@ -91,30 +130,28 @@ const Portfolio = () => {
           <div key={item.id} className="bg-gray-100 p-4 rounded-lg shadow-lg overflow-hidden">
             <img 
               src={item.url} 
-              alt={item.title} 
+              alt={item.title || 'Gallery image'} 
               className="w-full h-[450px] object-cover object-top-12 rounded-md mb-7 hover:scale-110 transition-transform duration-500 ease-in-out cursor-pointer" 
               onClick={() => handleImageClick(item)}
               onError={(e) => e.target.src = '/path/to/default-image.jpg'} // Fallback image
             />
             <div className='image-information flex justify-between my-3'>
-              <h2 className="text-lg font-bold">{item.name}</h2>
+              <h2 className="text-sm font-bold uppercase">{item.name}</h2>
               <div className='gallery-icons flex space-x-2'>
-                <span 
-                  className='text-orange-600 font-poppins text-lg cursor-pointer'
-                >
-                  <FontAwesomeIcon icon={faEye} size={2}/> {engagement[item.id]?.view || 0}
+                <span className='text-orange-600 font-poppins text-lg cursor-pointer'>
+                  <FontAwesomeIcon icon={faEye} size="lg"/> {engagement[item.id]?.view || 0}
                 </span>
                 <span 
                   className='text-orange-600 font-poppins text-lg cursor-pointer'
                   onClick={() => handleEngagementButton(item.id, 'love')}
                 >
-                  <FontAwesomeIcon icon={faHeart} size={2}/> {engagement[item.id]?.love || 0}
+                  <FontAwesomeIcon icon={faHeart} size="lg"/> {engagement[item.id]?.love || 0}
                 </span>
                 <span 
                   className='text-orange-600 font-poppins text-lg cursor-pointer'
                   onClick={() => handleEngagementButton(item.id, 'like')}
                 >
-                  <FontAwesomeIcon icon={faThumbsUp} size={2}/> {engagement[item.id]?.like || 0}
+                  <FontAwesomeIcon icon={faThumbsUp} size="lg"/> {engagement[item.id]?.like || 0}
                 </span>
               </div>
             </div>

@@ -56,8 +56,8 @@ const AdminProjects = () => {
     const deleteImage = async (id) => {
         try {
             await deleteDoc(doc(db, 'images', id));
-            setImages(prev => prev.filter(img => img.id !== id));
-            setLoadedImages(prev => prev.filter(img => img.id !== id));
+            setImages(prev => prev.filter(dc => dc.id !== id));
+            setLoadedImages(prev => prev.filter(dc => dc.id !== id));
             setSelectedImage(null); // Close modal if the deleted image was selected
         } catch (error) {
             console.error("Error deleting image:", error);
@@ -81,7 +81,7 @@ const AdminProjects = () => {
                             onError={(e) => e.target.src = '/path/to/default-image.jpg'} // Fallback image
                         />
                         <div className='image-information flex justify-between my-3'>
-                            <h2 className="text-lg font-bold text-white">{item.name}</h2>
+                            <h2 className="text-lg font-bold text-white uppercase">{item.name}</h2>
                             <div className='gallery-icons flex space-x-2'>
                                 <span className='text-orange-600 font-poppins text-lg cursor-pointer'>
                                     <FontAwesomeIcon icon={faEye} size={2}/> {engagement[item.id]?.view || 0}

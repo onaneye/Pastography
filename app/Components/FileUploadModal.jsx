@@ -6,6 +6,7 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { addDoc, collection } from 'firebase/firestore';
 import { db, storage } from '@/firebaseConfig'; // Adjust the path if needed
 import { getAuth } from 'firebase/auth';
+import { Engagement } from 'next/font/google';
 
 const FileUploadModal = () => {
     const [uploading, setUploading] = useState(false);
@@ -14,6 +15,15 @@ const FileUploadModal = () => {
         category: "",
         file: null
     });
+    const time = new Date()
+    const hrs = time.getHours()
+    const min = time.getMinutes()
+    const date = new Date().toLocaleDateString('en-US',{
+      year: 'numeric',
+      month: "long",
+      day: "numeric"
+    })
+   
 
     const handleButtonClick = () => {
         document.getElementById('imageUpload').click();
@@ -42,6 +52,10 @@ const FileUploadModal = () => {
             ...prevState,
             file: file
           }));
+
+          if (!fileUploadValue.category) {
+            alert("Select a category")
+          }
         }
       };
       
@@ -75,6 +89,9 @@ const FileUploadModal = () => {
             name: fileUploadValue.fileName,
             category: fileUploadValue.category,
             userId: user.uid, // Optionally save the user ID
+            engagment:{views:0,like:0, love:0},
+            Date:  date,
+            time: `${hrs}:${min} ${hrs >= 12? "PM":"AM"}`
           });
       
           alert('File uploaded and metadata saved!');
