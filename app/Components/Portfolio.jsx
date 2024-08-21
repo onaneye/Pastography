@@ -104,8 +104,8 @@ const Portfolio = () => {
 
   return (
     <div className="p-4">
-      <h3 className="text-md text-green-500 font-medium uppercase text-center font-poppins mt-[10%]">Our Gallery</h3>
-      <h1 className='text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold capitalize text-gray-700 text-center mb-12 font-poppins'>
+      <h3 className="text-md text-green-500 font-medium uppercase text-center font-montserrat mb-6 mt-[10%]">Our Gallery</h3>
+      <h1 className='text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase text-black text-center mb-12 font-montserrat'>
         Our Works Speak
       </h1>
       <ul className='flex flex-row flex-shrink justify-center items-center my-2 p-3 space-x-2 lg:space-x-12'>

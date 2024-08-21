@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'Mona Sans';
+    src: url('/fonts/MonaSans-Regular.woff2') format('woff2'),
+         url('/fonts/MonaSans-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Mona Sans';
+    src: url('/fonts/MonaSans-Bold.woff2') format('woff2'),
+         url('/fonts/MonaSans-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Helvetica Neue';
+    src: url('/fonts/HelveticaNeue-Regular.woff2') format('woff2'),
+         url('/fonts/HelveticaNeue-Regular.woff') format('woff'),
+         url('/fonts/HelveticaNeue-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Helvetica Neue';
+    src: url('/fonts/HelveticaNeue-Bold.woff2') format('woff2'),
+         url('/fonts/HelveticaNeue-Bold.woff') format('woff'),
+         url('/fonts/HelveticaNeue-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+  
