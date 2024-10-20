@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="flex flex-wrap justify-between">
             {/* logo image */}
             <div className='w-[200px]'>
-            <img src="./images/logo.png" className='my-7 w-[300px]' alt="" srcset="" />
+            <img src="./images/logo.png" className='my-7 w-[300px]' alt="footer-logo" loading="lazy"  />
             </div>
            
           {/* About Section */}

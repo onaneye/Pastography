@@ -30,6 +30,7 @@ const Modal = ({ isOpen, onClose, image }) => {
           src={image.url} 
           alt={image.title} 
           className="w-full h-auto max-w-lg rounded-lg"
+          loading="lazy"
         />
       </div>
     </div>

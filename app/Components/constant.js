@@ -1,9 +1,9 @@
 // Our service picture imports
 import portraitImages from "/public/images/portrait-person-wearing-yellow.jpg"
 import birthdayShoot from "/public/images/black-white-portrait-professional-tennis-player.jpg"
-import eventCoverage from "/public/images2/IMG_0004.jpg"
-import weddingPhotography from "/public/images2/IMG_8603.jpg"
-import familyPhotography from "/public/images2/family/14.jpg"
+import eventCoverage from "/public/images/portrait-person-wearing-yellow.jpg"
+import weddingPhotography from "/public/images/portrait-person-wearing-yellow.jpg"
+import familyPhotography from "/public/images/portrait-person-wearing-yellow.jpg"
 
 // Testimonials Picture Import
 import Ogechi from "/public/images/portrait-person-daily-life-new-york-city.jpg"

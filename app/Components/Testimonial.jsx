@@ -24,6 +24,7 @@ const Testimonial = () => {
                 className='rounded-t-lg h-full w-full md:rounded-l-lg object-cover'
                 width={200}
                 height={100}
+                loading='lazy'
               />
             </div>
             <div className='px-4 md:px-5'>

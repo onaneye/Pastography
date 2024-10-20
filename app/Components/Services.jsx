@@ -12,7 +12,7 @@ const Services = () => {
         <div className='slide-track flex gap-3 absolute left-0 animate-slide'>
           {servicesData.map((item, id)=>(
             <div className='relative h-[400px] w-[300px] overflow-hidden bg-blue-500 transition-transform duration-300 hover:scale-110 cursor-pointer' key={item.id}>
-            <Image src={item.image} alt="Portrait" className="object-cover w-full h-full" />
+            <Image src={item.image} alt="Portrait" className="object-cover w-full h-full" loading="lazy" />
    
              {/* Gradient overlay */}
              <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-transparent opacity-80"></div>

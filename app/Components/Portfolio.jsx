@@ -134,6 +134,7 @@ const Portfolio = () => {
               className="w-full h-[450px] object-cover object-top-12 rounded-md mb-7 hover:scale-110 transition-transform duration-500 ease-in-out cursor-pointer" 
               onClick={() => handleImageClick(item)}
               onError={(e) => e.target.src = '/path/to/default-image.jpg'} // Fallback image
+              loading="lazy"
             />
             <div className='image-information flex justify-between my-3'>
               <h2 className="text-sm font-bold uppercase">{item.name}</h2>

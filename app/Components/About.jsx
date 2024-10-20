@@ -39,7 +39,7 @@ const About = () => {
         </div>
       </div>
       <div className='container xl:mx-12 p-4'>
-        <Image src={aboutImg} alt='about' className='w-full h-full rounded-[10px] object-cover' />
+        <Image src={aboutImg} alt='about' className='w-full h-full rounded-[10px] object-cover' width={40} loading="lazy"  />
       </div>
     </div>
     <div className='w-full lg:container lg:mx-16 lg:p-4'>

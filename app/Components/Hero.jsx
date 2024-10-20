@@ -1,8 +1,9 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React,{ useEffect, useState } from 'react';
 import { heroSlider } from './constant';
 import Link from 'next/link';
 import Navbar from './Navbar';
+import Image from 'next/image'
 
 const Hero = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -43,7 +44,7 @@ const Hero = () => {
                     return (
                         <div key={item.id}
                              className={`shadow-2xl flex space-x-1 bg-gray-500/20 p-5 backdrop-blur-md rounded-lg border border-slate-200 ${isActive ? 'border-orange-500' : ''}`}>
-                            <img src={item.bgImage} alt={item.title} className={`w-[100px] h-[100px] rounded-lg ${isActive ? 'opacity-100' : 'opacity-60'}`} />
+                            <img src={item.bgImage} alt={item.title} className={`w-[100px] h-[100px] rounded-lg ${isActive ? 'opacity-100' : 'opacity-60'}`} loading="lazy" />
                             <div className='px-2'>
                                 <h2 className='text-white font-poppins text-lg px-4'>{item.title}</h2>
                                 <p className='text-sm text-white font-Josefin_Sans font-normal px-4'>{item.description}</p>
