@@ -108,7 +108,7 @@ const Portfolio = () => {
       <h1 className='text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase text-black text-center mb-12 font-montserrat'>
         Our Works Speak
       </h1>
-      <ul className='flex flex-row flex-shrink-1 justify-center items-center my-2 p-3 space-x-2 lg:space-x-12'>
+      <ul className='hidden md:flex flex-row flex-shrink-1 justify-center items-center my-2 p-3 space-x-2 lg:space-x-12'>
         <li
           onClick={() => setCategoryActive('All')}
           className={`text-md bg-gray-200 shadow-lg rounded-md px-3 py-2 cursor-pointer transition-all ease-in ${categoryActive === 'All' ? 'bg-orange-500 text-white' : 'text-green-500 hover:bg-orange-500 hover:text-white'}`}

@@ -6,8 +6,8 @@ import weddingPhotography from "/public/images/portrait-person-wearing-yellow.jp
 import familyPhotography from "/public/images/portrait-person-wearing-yellow.jpg"
 
 // Testimonials Picture Import
-import Ogechi from "/public/images/portrait-person-daily-life-new-york-city.jpg"
-import OlaSamuel from "/public/images/portrait-person-daily-life-new-york-city.jpg"
+import Ogechi from "/public/images/portrait-person-daily-life-new-york-city_1.jpg"
+import OlaSamuel from "/public/images/portrait-person-daily-life-new-york-city_1.jpg"
 import PastorTolu from "/public/images/portrait-person-wearing-yellow.jpg"
 import mrsCythia from "/public/images/african-woman-posing-studio.jpg"
 

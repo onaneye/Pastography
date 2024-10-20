@@ -4,11 +4,11 @@ import { servicesData } from "./constant";
 
 const Services = () => {
   return (
-    <div>
+    <div className=''>
       <h1 className='text-5xl md:5xl lg:text-7xl xl:text-[8rem] text-center font-bold uppercase font-helvetica text-gray-800  mb-12 tracking-tight mx-12'>
        COLLECTION
       </h1>
-      <div className='slider h-[400px] w-[95%] mx-auto snap-x snap-mandatory  relative overflow-hidden'>
+      <div className='slider h-[400px] xl:w-[95%] mx-auto snap-x snap-mandatory  relative overflow-hidden'>
         <div className='slide-track flex gap-3 absolute left-0 animate-slide'>
           {servicesData.map((item, id)=>(
             <div className='relative h-[400px] w-[300px] overflow-hidden bg-blue-500 transition-transform duration-300 hover:scale-110 cursor-pointer' key={item.id}>

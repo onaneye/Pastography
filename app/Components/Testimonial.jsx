@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 const Testimonial = () => {
   return (
-    <div className='bg-gray-900 h-auto py-12 mt-12'>
+    <div className=' bg-gray-900 h-auto py-12 mt-12'>
       <h3 className="text-md text-white font-medium uppercase text-center font-poppins">Our Testimonials</h3>
       <h1 className='text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold capitalize text-white text-center mb-12 font-poppins'>
         What our clients say
