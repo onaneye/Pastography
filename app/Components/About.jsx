@@ -35,7 +35,7 @@ const About = () => {
         <h3 className=' text-center mb-6 font-montserrat text-orange-500 text-lg uppercase'>About Us</h3>
         <h1 className='text-4xl md:4xl lg:text-3xl xl:text-4xl font-mona font-bold  text-center uppercase justify-start w-full'>A dedicated team,capturing <br/>precious  <span className=' uppercase'>  moment with every click</span> </h1>
         <div className='mx-auto xl:w-1/2'>
-         <p className='md:text-lg lg:xl xl:xl py-4 text-gray-600 font-Josefin_Sans lg:leading-9 text-center'>God’s Gift Multimedia, located in Ota, Ogun State, Nigeria, was founded in 2019 with an initial investment of ₦1,500 ($3.65) by Adetayo Samuel. Our services primarily cater to Nigerians, constituting approximately 95% of our clientele..</p>
+         <p className='md:text-lg lg:xl xl:xl py-4 text-gray-600 font-Josefin_Sans lg:leading-9 text-center'>God’s Gift Multimedia, located in Ota, Ogun State, Nigerians, was founded in 2019 with an initial investment of ₦1,500 ($3.65) by Adetayo Samuel. Our services primarily cater to Nigerians, home and abroad  constituting approximately 95% of our clientele..</p>
         </div>
       </div>
       <div className='container xl:mx-2 p-2'>

@@ -26,26 +26,31 @@ const Footer = () => {
           <div className="w-full md:w-1/4 mb-6">
             <h3 className="text-xl font-semibold mb-4 text-orange-500 font-poppins-bold">Contact Us</h3>
             <ul className="space-y-2 font-Josefin_Sans">
-              <li className="text-sm">1234 Photography St, Photo City, PC 12345</li>
-              <li className="text-sm">Phone: (123) 456-7890</li>
-              <li className="text-sm">Email: info@example.com</li>
+              <li className="text-sm">3, Teju street, opposite welcome hotel Ota</li>
+              <li className="text-sm">Phone: +234 9026 906 364</li>
+              <li className="text-sm">Email: adetayosamuel8@gmail.com</li>
             </ul>
           </div>
 
           {/* Social Media Links */}
           <div className="w-full md:w-1/4 mb-6">
             <h3 className="text-xl font-semibold mb-4 text-orange-500 font-poppins">Follow Us</h3>
-              <SocialMediaIcons/>
+              <SocialMediaIcons
+              instagram='https://www.instagram.com/godsgiftmultimedia/profilecard/?igsh=MTNxb3lmeTF3NzI0ZQ'
+              facebook='https://www.facebook.com/Samseg2?mibextid=ZbWKwL'
+              twitter='https://twitter.com/AdetayoSamuel8'
+              linkedin='https://www.linkedin.com/in/adetayosamuel/'
+              />
           </div>
         </div>
 
         {/* Copyright Section */}
         <div className="border-t border-gray-700 pt-4 text-center text-sm">
-          <p className='font-Josefin_Sans'>&copy; {new Date().getFullYear()} Your Company. All Rights Reserved.</p>
+          <p className='font-Josefin_Sans'>&copy; {new Date().getFullYear()} God's Gift Multimedia. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
-  );
+  ); 
 };
 
 export default Footer;

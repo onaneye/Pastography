@@ -7,16 +7,16 @@ const SocialMediaIcons = ({facebook, twiter, instagram, linkedin}) => {
   return (
       <div className="social-media-container text-white space-x-7 w-full my-5">
         <a href={twiter} aria-label="Twitter">
-        <FontAwesomeIcon icon={faTwitter} size="2x" />
+        <FontAwesomeIcon icon={faTwitter} size="2x"  className='cursor-pointer'/>
         </a>
         <a href={facebook} aria-label="Facebook">
-        <FontAwesomeIcon icon={faFacebook} size="2x" />
+        <FontAwesomeIcon icon={faFacebook} size="2x" className='cursor-pointer'/>
         </a>
         <a href={instagram} aria-label="Instagram">
-        <FontAwesomeIcon icon={faInstagram} size="2x" />
+        <FontAwesomeIcon icon={faInstagram} size="2x" className='cursor-pointer' />
         </a>
         <a href={linkedin} aria-label="Instagram">
-        <FontAwesomeIcon icon={faLinkedin} size="2x" />
+        <FontAwesomeIcon icon={faLinkedin} size="2x" className='cursor-pointer' />
         </a>
      </div> 
      )

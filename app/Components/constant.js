@@ -118,28 +118,27 @@ export const TestimonialsData =[
     id: 1,
     profilePicture: Ogechi,
     name: "Ogechi. A",
-    testimony: "God's gift multimedia is the best photography service i've patronized",
-    rating: 5
+    testimony: "God's Gift Multimedia Service truly exceeded my expectations! Their photography captured every special moment with such clarity and emotion.",
   },
   {
     id: 2,
     profilePicture: Ogechi,
-    name: "Ola Samuel",
-    testimony: "God's gift multimedia is the best photography service i've patronized",
+    name: "— Sarah A.",
+    testimony: "The team was professional, punctual, and incredibly creative. They made us feel comfortable throughout the session, and the final photos were breathtaking. I highly recommend their services to anyone looking for top-notch photography!",
     rating: 4.5
   },
   {
     id: 3,
     profilePicture: PastorTolu,
     name: "Mrs Cythia",
-    testimony: "God's gift multimedia is the best photography service i've patronized",
+    testimony: "I am so impressed with the work of God's Gift Multimedia Service.  They paid attention to every detail and ensured every special moment was beautifully documented.",
     rating: 5
   },
   {
     id: 4,
     profilePicture: mrsCythia,
     name: "Pastor Tolu",
-    testimony: "God's gift multimedia is the best photography service i've patronized",
+    testimony: "God's Gift Multimedia Service has a way of making ordinary moments look extraordinary. I hired them for a family photoshoot, and they made the experience so much fun. ",
     rating: 2.5
   }
 ]
